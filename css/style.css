@@ -24,11 +24,15 @@ body{
 }
 
 .demo .large-header {
-   /*background-image: url('../boardwalk_fern_portrate.jpg');*/
-   background-image: url('../resources/masthead-interleaved.png');
-   margin: 0;
-   padding: 0;
-   left: 0;
+  /*background-image: url('../resources/Fern_boardwalk_forest_landscape.jpg');*/
+  background-image: url('../resources/masthead-interleaved.png');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  left: 0;
 }
 
 .main-title {
@@ -198,7 +202,7 @@ body{
   background-color: rgb(50,50,50,.1);
   overflow: hidden;
   width: 100%;
-  grid-template-rows: fit-content(40vh) fit-content(40vh) fit-content(40vh);
+  /*grid-template-rows: fit-content(40vh) fit-content(40vh) fit-content(40vh);*/
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 10px;
   grid-column-gap: 10px;
@@ -227,7 +231,9 @@ body{
   height: auto;
 }
 
-.proj-overlay {
+
+
+.proj-underlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -235,10 +241,15 @@ body{
   width: 100%;
   background-color: rgb(50,50,50,.85);
   color: white;
-  z-index: 3;
+  z-index: 2;
   padding: 2vw 5vw 2vh 5vw;
-  font-size: 20px;
+  font-size: 1px;
   vertical-align: middle;
+}
+
+.proj-underlay-text {
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .wrapper {
@@ -267,7 +278,7 @@ body{
   width: 100%;
   /*display: block;*/
   height: auto;
-  z-index: 2;
+  z-index: 0;
   top: 0;
   left: 0;
   /*margin-top: -100%;*/
@@ -283,6 +294,7 @@ body{
 /* Company */
 .co {
   background: rgb(50,50,50);
+  /*height: 50%;*/
   margin: 0;
   z-index: 5;
 }

@@ -81,20 +81,6 @@ var projectInfo = [{
                        'projText': "<b>Melody Maker</b> is designed to bridge the gap between growing AI technology and creatives. Musicians use its web interface to write music in a feedback cycle with a generative neural network trained with various genres of music. Built using TensorFlow and Magenta.js and hosted on Firebase. This project was supported by Northwestern's Undergraduate Research Grant in the fall of 2018."
                    },
                    {
-                       'name'    : "Musique Man",
-                       'href'    : "MusiqueMan/MusiqueMan.html",
-                       'projPic' : "project-thumbnails/musiqueman.png",
-                       'projGif' : "project-thumbnails/musiqueman.gif",
-                       'projText': "<b>MusiqueMan</b> explores the ability of neural nets to capture compositional style by training a generative network based on Daniel Johnson's novel biaxial LSTM architecture with Bach, Chopin, and Beatles-like music. (2016)"
-                   },
-                   {
-                       'name'    : "SMG",
-                       'href'    : "SMG/Website/smg.html",
-                       'projPic' : "project-thumbnails/smg.png",
-                       'projGif' : "project-thumbnails/smg.gif",
-                       'projText': "The Similarity Matrix Granulator, or <b>SMG</b>, is a granular synthesizer with an extra dimension – the ability to specify the similarity of grains to further sculpt sounds. (2016)"
-                   },
-                   {
                        'name'    : "Orpheus",
                        'href'    : "OrpheusDemoSite/orpheus.html",
                        'projPic' : "project-thumbnails/orpheus.png",
@@ -107,6 +93,20 @@ var projectInfo = [{
                        'projPic' : "project-thumbnails/marcia3.png",
                        'projGif' : "project-thumbnails/marcia-interact2.gif",
                        'projText': "<b>Marcia Fraerman's</b> progressive single page website was a freelance project I took on to grow my web/design skills. (Summer 2018)"
+                   },
+                   {
+                       'name'    : "Musique Man",
+                       'href'    : "MusiqueMan/MusiqueMan.html",
+                       'projPic' : "project-thumbnails/musiqueman.png",
+                       'projGif' : "project-thumbnails/musiqueman.gif",
+                       'projText': "<b>MusiqueMan</b> explores the ability of neural nets to capture compositional style by training a generative network based on Daniel Johnson's novel biaxial LSTM architecture with Bach, Chopin, and Beatles-like music. (2016)"
+                   },
+                   {
+                       'name'    : "SMG",
+                       'href'    : "SMG/Website/smg.html",
+                       'projPic' : "project-thumbnails/smg.png",
+                       'projGif' : "project-thumbnails/smg.gif",
+                       'projText': "The Similarity Matrix Granulator, or <b>SMG</b>, is a granular synthesizer with an extra dimension – the ability to specify the similarity of grains to further sculpt sounds. (2016)"
                    },
                    {
                        'name'    : "HealthStrategy",
@@ -143,17 +143,37 @@ function populateProjects(){
     //
     // Init
     //
-    var projGrid = document.getElementById('proj-grid');
     var currProj, i;
     var numProjects = projectInfo.length;
     var numGridSquares = splitLastSquare ? projectInfo.length - 2 : projectInfo.length;
+    var projGrid = document.getElementById('proj-grid');
+
+    var isSplit = () => {
+      if ((splitLastSquare) && (i >= numProjects - 2)){
+        return true
+      } else {
+        return false
+      }
+    }
+
+    var isFirstSplit = () => {
+      if ((splitLastSquare) && (i == numProjects-2)){
+        return true
+      } else {
+        return false
+      }
+    }
 
     //
     // Row resizing math and vars
     //
-    var cells = [];
     var imgAspects = splitLastSquare ? new Array(numGridSquares-1) : new Array(numGridSquares);
     var numLoadedImgs = 0;
+
+    //
+    // Don't display until everything is ready.
+    //
+    projGrid.style.display = 'none';
 
     for (i = 0; i < numProjects; i++){
         //
@@ -164,18 +184,26 @@ function populateProjects(){
         //
         // Create new elements
         //
-        var cell = document.createElement('div')
+        if (!isSplit() || isFirstSplit()){
+          var cell = document.createElement('div')
+          cell.classList.add('proj-cell');
+         }
+
         var link = document.createElement('a');
         var projPic = document.createElement('img');
         var projGif = document.createElement('img');
         var underlayText = document.createElement('div');
         var underlay = document.createElement('div')
 
+        if (isSplit){
+          var wrapper = document.createElement('div')
+          wrapper.classList.add('wrapper');
+          projPic.classList.add('co')
+         }
+
         //
         // Add info to elements
         //
-        // Make all size size 0 until the pics load
-        cell.classList.add('proj-cell');
 
         link.href = proj.href;
 
@@ -230,9 +258,9 @@ function populateProjects(){
                       gridTemplateRows += rowHeight.toString()+"px ";
                   }
                   projGrid.style.gridTemplateRows = gridTemplateRows;
-                  console.log("gridTemplateRows",gridTemplateRows);
               }
               resizeGrid();
+              projGrid.style.display = 'grid';
               console.log('calling font resize');
               forceFontFit('proj-underlay-text');
               resizeBackground();
@@ -247,12 +275,26 @@ function populateProjects(){
 
         underlay.appendChild(underlayText);
 
-        cell.appendChild(link)
-        cell.appendChild(projGif);
-        cell.appendChild(underlay)
+        if (!isSplit()){
+          cell.appendChild(link);
+          cell.appendChild(projGif);
+          cell.appendChild(underlay);
+        } else if (isFirstSplit()){
+          console.log("First SPLIT")
+          wrapper.appendChild(link);
+          wrapper.appendChild(projGif);
+          wrapper.appendChild(underlay);
+          cell.appendChild(wrapper);
+        } else {
+          // projPic.style.verticalAlign = 'bottom';
+          wrapper.appendChild(link)
+          wrapper.appendChild(projGif);
+          wrapper.appendChild(underlay)
+          cell.appendChild(wrapper);
+        }
+
 
         projGrid.appendChild(cell);
-        cells.push(cell);
     }
 }
 
