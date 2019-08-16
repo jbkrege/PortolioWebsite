@@ -1,3 +1,5 @@
+var debugOffline = false;
+
 function print(string){
     //
     // For convinience
@@ -5,19 +7,20 @@ function print(string){
     console.log(string);
 }
 
-//
-// Draw Triangified content background
-// 
-var pattern = Trianglify({
-  width: window.innerWidth,
-  height: window.innerHeight*1.5,
-  x_colors: ['#013220','#000', '#222', '#444','#aaa'],
-  cell_size: 40
-});
-
-var polyCanvas = pattern.canvas();
-polyCanvas.classList.add("polyBackground");
-document.body.appendChild(polyCanvas);
+if (!debugOffline){
+  //
+  // Draw Triangified content background
+  // 
+  var pattern = Trianglify({
+    width: window.innerWidth,
+    height: window.innerHeight*1.5,
+    x_colors: ['#013220','#000', '#222', '#444','#aaa'],
+    cell_size: 40
+  });
+  var polyCanvas = pattern.canvas();
+  polyCanvas.classList.add("polyBackground");
+  document.body.appendChild(polyCanvas);
+}
 
 
 function getDistanceToTop(element) {
@@ -55,7 +58,7 @@ function forceFontFit(styleClass){
     // Todo: replace this with a direct calculation
     //
     console.log("Resizing fonts");
-    var elements = Array.from(document.getElementsByClassName(styleClass)).forEach(function(e){
+    var elements = Array.from(document.getElementsByClassName(styleClass)).forEach((e) =>{
         e.style.setProperty('font-size', '1px','important');
         var style = window.getComputedStyle(e);
         var parentStyle = window.getComputedStyle(e.parentNode);
@@ -263,7 +266,9 @@ function populateProjects(){
               projGrid.style.display = 'grid';
               console.log('calling font resize');
               forceFontFit('proj-underlay-text');
-              resizeBackground();
+              if (!debugOffline){
+                resizeBackground();
+              }
               window.onresize = minProjRows;
             }
         }
@@ -303,7 +308,9 @@ function minProjRows(){
     // resizeGrid();
     resizeGrid();
     forceFontFit("proj-underlay-text");
-    resizeBackground();
+    if (!debugOffline){
+      resizeBackground(); 
+    }
 }
 
 populateProjects();

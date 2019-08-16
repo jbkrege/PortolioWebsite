@@ -11,6 +11,7 @@ body{
   /*overflow: hidden;*/
   font-family: 'Lato', sans-serif;
   background: #444;
+  /*background: #eee;*/
 }
 
 .large-header {
@@ -254,6 +255,8 @@ body{
 
 .wrapper {
   position: relative;
+  height: 50%;
+  text-align: center;
 }
 
 .proj-pic {
@@ -294,8 +297,9 @@ body{
 /* Company */
 .co {
   background: rgb(50,50,50);
-  /*height: 50%;*/
-  margin: 0;
+  height: 100%;
+  /*margin: 0;*/
+  margin: auto;
   z-index: 5;
 }
 
