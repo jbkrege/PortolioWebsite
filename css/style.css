@@ -11,7 +11,6 @@ body{
   /*overflow: hidden;*/
   font-family: 'Lato', sans-serif;
   background: #444;
-  /*background: #eee;*/
 }
 
 .large-header {
@@ -24,9 +23,16 @@ body{
    z-index: 1;
 }
 
-.demo .large-header {
-  /*background-image: url('../resources/Fern_boardwalk_forest_landscape.jpg');*/
-  background-image: url('../resources/masthead-interleaved.png');
+
+.large-header {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  left: 0;
+}
+.masthead {
+  background-image: url('../resources/Fern_boardwalk_forest_landscape.jpg');
+  /*background-image: url('../resources/masthead-interleaved.png');*/
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -34,6 +40,7 @@ body{
   margin: 0;
   padding: 0;
   left: 0;
+  height: 100vh;
 }
 
 .main-title {
@@ -49,7 +56,7 @@ body{
    text-shadow: 3px 5px 5px rgba(0,0,0,.7);
 }
 
-.demo .main-title {
+.masthead .main-title {
 /*    text-transform: uppercase; */
    font-size: 4.2em;
    letter-spacing: 0.1em;
@@ -60,7 +67,7 @@ body{
 }
 
 @media only screen and (max-width: 768px) {
-   .demo .main-title {
+   .masthead .main-title {
       font-size: 3em;
    }
 }
@@ -108,27 +115,41 @@ body{
   }
 }*/
 
-#bio-container {
+#bio-container{
+  margin-top: 25vh;
+  margin-bottom: 25vh;
+}
+
+#bio-fill {
   display: grid;
   grid-template-rows: 40vh;
   grid-template-columns: 1fr 1fr;
   position: relative;
-  width: 95%;
-  background: rgb(255,255,255,.3);
+  width: 0;
+  background: rgb(255,255,255,0);
   border-radius: 20vh 3vh 3vh 20vh;
+
   margin-top: 15vh;
   margin-bottom: 15vh;
-  margin-right: 2.5vw;
+  margin-right: -2.5vw;
   margin-left: 2.5vw;
+
   padding-left: 5px;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-right: 2vh;
+
+  transition: all 1s ease-out;
+}
+
+.visible-bio-fill {
+  width: 95% !important;
+  background: rgb(255,255,255,.3) !important;
 }
 
 .bio-elem {
   grid-row: 1;
-  justify-self: left;
+  justify-content: : left;
   align-self: center;
 }
 
@@ -139,44 +160,37 @@ body{
   border-radius: 20vh;
 }
 
-@media only screen and (max-width: 768px) {
+/* Mobile */
+/*@media only screen and (max-width: 768px) {
    #headShot {
       width: 150px;
    }
    #bio-container {
       grid-template-rows: 30vh;
-      /*margin-top: 10vh;
-      margin-bottom: 10vh;*/
    }
-}
+}*/
 
 #mission {
   color: white;
-  opacity: .8;
+  opacity: 0;
   font-size: 4vw;
-  letter-spacing: .05em;
+  letter-spacing: 0.05em;
   font-family: 'Lato', sans-serif;
   font-weight: lighter;
   border-radius: 2vw;
-  padding: .5em 0 .5em .75em;
+  padding: 0.5em 0 0.5em 0.75em;
+  transition: opacity 1s ease-out;
   /*   background-color: rgb(0,0,0,.5); */
+}
+
+.visible-mission {
+  opacity: 0.8 !important;
 }
 
 @media only screen and (min-width: 1550px) {
   #mission {
     font-size: 3vw;
   }
-}
-
-#skills-container {
-  display: grid;  grid-template-rows: 20vh 20vh;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  row-gap: 3vh;
-  column-gap: 1vw;
-  width: 95%;
-  margin-right: 2.5vw;
-  margin-left: 2.5vw;
-  /*background-color: rgb(100,100,100,.5);*/
 }
 
 @media only screen and (max-width: 768px) {
@@ -187,10 +201,31 @@ body{
   }
 }
 
-.skill {
+.skill-skin {
   height: auto;
-  width: 50%;
-  justify-self: center;
+  width: 8vh;
+  height: 8vh;
+  position: absolute;
+  bottom: 50%;
+  /*box-shadow: 3px 3px 3px rgba(0,0,0,0.2);*/
+  /*transition: transform 5s, margin 2s;*/
+  transition-property: transform, margin, bottom, left;
+  transition-duration: 1.5s, 2s, 1s, 3s;
+  transition-timing-function: ease-out;
+/*  margin-top: -25px;
+  margin-left: 50px;*/
+  margin-top: 10vh;
+  margin-left: 5vh;
+  z-index: 1;
+  -webkit-backface-visibility: hidden; 
+}
+
+.skill {
+  width: 100%;
+  height: 100%;
+  transition-property: transform;
+  transition-duration: 2s;
+  transition-timing-function: ease-out;
 }
 
 #proj-container{
@@ -300,21 +335,8 @@ body{
   height: 100%;
   /*margin: 0;*/
   margin: auto;
+  position: relative;
   z-index: 5;
-}
-
-.align-bottom {
-  /*bottom: 0;*/
-  /*left: 0;*/
-  /*position: absolute;*/
-  /*width: 100%;*/
-  /*height: 40vh;*/
-
-  /*    
-  margin-top: -100%;
-  vertical-align: bottom;
-  display: flex;
-  */
 }
 
 .section-heading {
@@ -337,7 +359,7 @@ body{
 
 .contact-icons {
   display: block;
-  align: center;
+  align-items: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: -1vh;

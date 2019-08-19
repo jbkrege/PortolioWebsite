@@ -1,28 +1,3 @@
-var debugOffline = false;
-
-function print(string){
-    //
-    // For convinience
-    //
-    console.log(string);
-}
-
-if (!debugOffline){
-  //
-  // Draw Triangified content background
-  // 
-  var pattern = Trianglify({
-    width: window.innerWidth,
-    height: window.innerHeight*1.5,
-    x_colors: ['#013220','#000', '#222', '#444','#aaa'],
-    cell_size: 40
-  });
-  var polyCanvas = pattern.canvas();
-  polyCanvas.classList.add("polyBackground");
-  document.body.appendChild(polyCanvas);
-}
-
-
 function getDistanceToTop(element) {
     //
     // Gets distance from an element to the top of the page.
@@ -36,7 +11,6 @@ function getDistanceToTop(element) {
         yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
         element = element.offsetParent;
     }
-
     return yPosition ;
 }
 
@@ -46,10 +20,8 @@ function resizeBackground(){
     var footerTop = getDistanceToTop(footer);
     var bottom = footerTop+footer.clientHeight;
     var backgroundSize = (bottom - window.innerHeight).toString()+"px";
-    console.log("backgroundSize",backgroundSize);
     var polyBackground = document.getElementsByClassName("polyBackground")[0]
     polyBackground.style.setProperty('height',backgroundSize,'important');
-    console.log(polyBackground);
 }
 
 
@@ -57,7 +29,6 @@ function forceFontFit(styleClass){
     //
     // Todo: replace this with a direct calculation
     //
-    console.log("Resizing fonts");
     var elements = Array.from(document.getElementsByClassName(styleClass)).forEach((e) =>{
         e.style.setProperty('font-size', '1px','important');
         var style = window.getComputedStyle(e);
@@ -76,7 +47,25 @@ function forceFontFit(styleClass){
     });
 }
 
-var projectInfo = [{
+//
+// Function prototypes
+//
+var resizeProjectGrid;
+var minProjRows;
+
+function populateProjects(){
+    //
+    // Add gifs, pics, and descriptions to project cells.
+    //  fixes the need to resize after delivery 
+    //  which caused performance and concistancy issues
+    //
+    // Options
+    //
+
+    var projPerRow = 2;
+    var splitLastSquare = true;
+
+    var projectInfo = [{
                        'name'    : 'Melody Maker',
                        'href'    : "https://melodymaker-17f94.firebaseapp.com/",
                        'projPic' : 'project-thumbnails/melody-maker4.png',
@@ -124,24 +113,7 @@ var projectInfo = [{
                        'projPic' : "resources/swc-logo-white.svg",
                        'projGif' : "",
                        'projText': "An auditing tool for <b>SWC</b> that allows consultants to grade and display security portfolios graphically using the .Net framework and PowerBI. (Summer 2018)"
-                   },]
-
-//
-// Function prototypes
-//
-var resizeGrid;
-var minProjRows;
-
-function populateProjects(){
-    //
-    // Add gifs, pics, and descriptions to project cells.
-    //  fixes the need to resize after delivery 
-    //  which caused performance and concistancy issues
-    //
-    // Options
-    //
-    var projPerRow = 2;
-    var splitLastSquare = true;
+                   }]
 
     //
     // Init
@@ -236,21 +208,16 @@ function populateProjects(){
                 imgAspects[thisPic.gridLocation] = thisPic.height / thisPic.width;
             }
 
-            // Wait to display the images until they all load
-            // thisPic.style.height = 0;
-            // thisPic.style.width = 0;
-
             //
             // After all imgs have loaded
             //
             if (numLoadedImgs == numProjects){
-              print(imgAspects);
               var gridTemplateRows = "";
               // var rowHeights = []
               var minAspect = Math.min.apply(Math,imgAspects);
 
-              resizeGrid = () => {
-                  console.log("Resize Grid called");
+              resizeProjectGrid = () => {
+                  // console.log("resizeProjectGrid called");
                   var imageWidth = (window.innerWidth*.95-10)/projPerRow;
                   var rowHeight = minAspect*imageWidth - 20; //-20 b/c some margin thing
                   gridTemplateRows = ""
@@ -262,9 +229,8 @@ function populateProjects(){
                   }
                   projGrid.style.gridTemplateRows = gridTemplateRows;
               }
-              resizeGrid();
+              resizeProjectGrid();
               projGrid.style.display = 'grid';
-              console.log('calling font resize');
               forceFontFit('proj-underlay-text');
               if (!debugOffline){
                 resizeBackground();
@@ -285,7 +251,6 @@ function populateProjects(){
           cell.appendChild(projGif);
           cell.appendChild(underlay);
         } else if (isFirstSplit()){
-          console.log("First SPLIT")
           wrapper.appendChild(link);
           wrapper.appendChild(projGif);
           wrapper.appendChild(underlay);
@@ -304,16 +269,15 @@ function populateProjects(){
 }
 
 function minProjRows(){
-
-    // resizeGrid();
-    resizeGrid();
+  //
+  // 
+  //
+    resizeProjectGrid();
     forceFontFit("proj-underlay-text");
     if (!debugOffline){
       resizeBackground(); 
     }
 }
-
-populateProjects();
 
 
 
