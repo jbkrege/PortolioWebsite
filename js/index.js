@@ -1,3 +1,8 @@
+//
+// Mostly handles population of projects grid
+// and dynamic resizing
+//
+
 function getDistanceToTop(element) {
     //
     // Gets distance from an element to the top of the page.
