@@ -5,14 +5,15 @@
 var debugOffline = false
 
 // console.log("MVP TODO: \n",
-//             " * Reformat for mobile\n",
 //             " * Give credit where due",
-//             " * Move projectInfo somewhere else",
+//             " * Double check project sites"
+//             " * HOST"
+//             " * Reformat for mobile\n",
 //             "Later TODO \n",
 //             " * Could resizeProjectGrid be optimised?\n",
 //             " * Write a helper for my use that adds\n",
-//             "   Array.from(elems).forEach((elem, index)\n",
-//             "   to the iterable returned by getElemBy...\n",
+//             "     Array.from(elems).forEach((elem, index)\n",
+//             "     to the iterable returned by getElemBy...\n",
 //             " * Hang on how do js docstrings work? \n",
 //             " * Rewrite masthead and background scripts"
 //             )
