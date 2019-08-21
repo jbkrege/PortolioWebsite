@@ -6,9 +6,7 @@
   <title>Ben Krege</title>
   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
     <link rel="stylesheet" href="css/style.css">
-
     <link rel="shortcut icon" href="resources/favicon_raw.png" type="image/x-icon">
     <link rel="icon" href="resources/favicon_raw.png" type="image/x-icon">
 
@@ -16,14 +14,14 @@
 
 <body>
 
-  <div class="container demo">
-   <div class="content">
+  <div class="masthead">
+    <div class="content">
       <div id="large-header" class="large-header">
-         <canvas id="demo-canvas"></canvas>
-         <h1 class="main-title"> Ben Krege</h1>
+        <canvas id="masthead-canvas"></canvas>
+        <h1 class="main-title"> Ben Krege</h1>
       </div>
-   </div>
-</div>
+    </div>
+  </div>
 
 <!-- TODO: Consider a transition like this:
 https://www.istockphoto.com/za/photo/trunk-isolated-gm155154177-18692181 
@@ -32,23 +30,44 @@ https://www.istockphoto.com/za/photo/set-of-four-timber-isolated-on-white-backgr
 -->
 
 <div id="content-container">
-
   <div id="bio-container">
-    <img class = "bio-elem" id="headShot" src="resources/orange-beard-square.jpg" alt=""></>
-    <div class="bio-elem mission-cell"><p id="mission">a full stack developer and musician in pursuit of harmony.</p></div>
-  </div>
+    <div id="bio-fill">
+      <div class="skill-skin">
+        <img class="skill" src="resources/html.png" alt="html" title="HTML5">
+      </div>
+      <div class="skill-skin">
+        <img class="skill" src="resources/css.png" alt="css" title="CSS">
+      </div>
+      <div class="skill-skin">
+        <img class="skill" src="resources/js.png" alt="Javascript" title="Javascript ES6">
+      </div>
+      <div class="skill-skin">
+        <img class="skill" src="resources/react.png" alt="react" title="React">
+      </div>
+      <div class="skill-skin">
+        <img class="skill" src="resources/angular.png" alt="angular" title="Angular">
+      </div>
+      <div class="skill-skin">
+        <img class="skill" src="resources/node.png" alt="node" title="Node">
+      </div>
+      <div class="skill-skin">
+        <img class="skill" src="resources/python.png" alt="python" title="Python">
+      </div>
+      <div class="skill-skin"> 
+        <img class="skill" src="resources/c++.png" alt="c++" title="C++">
+      </div>
+      <div class="skill-skin">
+        <img class="skill" src="resources/tensorflow.png" alt="tensorflow" title="Tensorflow">
+      </div>
+      <div class="skill-skin">
+        <img class="skill" src="resources/sql.png" alt="sql" title="SQL">
+      </div>
 
-  <div id="skills-container">
-    <img class="skill" src="resources/html.png" alt="html" title="HTML5">
-    <img class="skill" src="resources/css.png" alt="css" title="CSS">
-    <img class="skill" src="resources/js.png" alt="Javascript" title="Javascript ES6">
-    <img class="skill" src="resources/react.png" alt="react" title="React">
-    <img class="skill" src="resources/angular.png" alt="angular" title="Angular">
-    <img class="skill" src="resources/node.png" alt="node" title="Node">
-    <img class="skill" src="resources/python.png" alt="python" title="Python"> 
-    <img class="skill" src="resources/c++.png" alt="c++" title="C++">
-    <img class="skill" src="resources/tensorflow.png" alt="tensorflow" title="Tensorflow">
-    <img class="skill" src="resources/sql.png" alt="sql" title="SQL">
+      <img class = "bio-elem" id="headShot" src="resources/orange-beard-square.jpg" alt="">
+
+    <div class="bio-elem mission-cell">
+      <p id="mission">a full stack developer and musician in pursuit of harmony.</p></div>
+    </div>
   </div>
 
   <div id="proj-container">
@@ -58,6 +77,7 @@ https://www.istockphoto.com/za/photo/set-of-four-timber-isolated-on-white-backgr
     </div>
   </div>
 </div>
+
 <div id="footer">
   <div class="center">
     <div>
@@ -74,19 +94,16 @@ https://www.istockphoto.com/za/photo/set-of-four-timber-isolated-on-white-backgr
     </div>
   </div>
 </div>
-<!-- JQuery -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script> -->
 
 <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js'></script>
-
 <script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js'></script>
-
 <script src='https://cdnjs.cloudflare.com/ajax/libs/trianglify/2.0.0/trianglify.min.js'></script>
-
-<script src="js/particles.js"></script>
-
-<script  src="js/index.js"></script>
+<script src="js/ben-straps.js"  type="text/javascript"></script>
+<script src='js/scroll.js'      type="text/javascript"></script>
+<script src="js/particles.js"   type="text/javascript"></script>
+<script src="js/index.js"       type="text/javascript"></script>
+<script src="js/animation.js"   type="text/javascript"></script>
+<script src="js/main.js"        type="text/javascript"></script>
 
 </body>
 
