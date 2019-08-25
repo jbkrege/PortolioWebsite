@@ -153,7 +153,7 @@ function populateProjects(){
     //
     // Don't display until everything is ready.
     //
-    projGrid.style.display = 'none';
+    projGrid.classList.add('hidden');
 
     for (i = 0; i < numProjects; i++){
         //
@@ -205,6 +205,7 @@ function populateProjects(){
         projPic.onload = (event) => {
             thisPic = event.path[0];
             numLoadedImgs += 1;
+            console.log(numLoadedImgs,"projects loaded");
 
             //
             // Save all image aspects that are not part of the split one.
@@ -217,6 +218,7 @@ function populateProjects(){
             // After all imgs have loaded
             //
             if (numLoadedImgs == numProjects){
+              console.log("all projects loaded");
               var gridTemplateRows = "";
               // var rowHeights = []
               var minAspect = Math.min.apply(Math,imgAspects);
@@ -235,7 +237,8 @@ function populateProjects(){
                   projGrid.style.gridTemplateRows = gridTemplateRows;
               }
               resizeProjectGrid();
-              projGrid.style.display = 'grid';
+              projGrid.classList.remove('hidden')
+              projGrid.classList.add('grid')
               forceFontFit('proj-underlay-text');
               if (!debugOffline){
                 resizeBackground();

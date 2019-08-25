@@ -7,7 +7,6 @@ var debugOffline = false
 // console.log("MVP TODO: \n",
 //             " * Give credit where due",
 //             " * Double check project sites"
-//             " * HOST"
 //             " * Reformat for mobile\n",
 //             "Later TODO \n",
 //             " * Could resizeProjectGrid be optimised?\n",
@@ -18,7 +17,7 @@ var debugOffline = false
 //             " * Rewrite masthead and background scripts"
 //             )
 
-// console.log("Scroll disabled temporarily while the page loads.\n See https://github.com/bevacqua/dragula/issues/468 to prevent warnings")
+console.log("Scroll disabled temporarily while the page loads.\n See https://github.com/bevacqua/dragula/issues/468 to prevent warnings")
 disableScroll()
 
 if (!debugOffline){

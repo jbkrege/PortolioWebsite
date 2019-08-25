@@ -3,7 +3,6 @@
 // Bio and Skills animation
 //
 var bioAnimationCallback = () => {
-  console.log("Bio visible")
   // 
   // Extend bio fill
   // 
@@ -20,7 +19,6 @@ var bioAnimationCallback = () => {
   // Arrange skills
   let skills = Array.from(document.getElementsByClassName('skill'))
   let skillsSkins = Array.from(document.getElementsByClassName('skill-skin'))
-  console.log(skillsSkins)
   let numSkills = skills.length
   let headShotD = 150
   var degPerItem = (totalDegrees == 360) ? totalDegrees/numSkills : totalDegrees/(numSkills-1)

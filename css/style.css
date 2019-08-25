@@ -23,6 +23,14 @@ body{
    z-index: 1;
 }
 
+.grid {
+  display: grid;
+}
+
+.hidden {
+  display: none;
+}
+
 
 .large-header {
   background-color: transparent;
