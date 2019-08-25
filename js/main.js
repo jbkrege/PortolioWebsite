@@ -17,9 +17,6 @@ var debugOffline = false
 //             " * Rewrite masthead and background scripts"
 //             )
 
-console.log("Scroll disabled temporarily while the page loads.\n See https://github.com/bevacqua/dragula/issues/468 to prevent warnings")
-disableScroll()
-
 if (!debugOffline){
   //
   // Draw Triangified content background
@@ -40,10 +37,10 @@ window.addEventListener('load', function(){
   callFunctionWhenVisible('#headShot',bioAnimationCallback,{"threshold": 0.5});
 
   // May need to move this down depending on whether the projects load fast enough
-  enableScroll();
   //
   // Lazy load projects
   // Defined in index.js
   //
   populateProjects();
+  enableScroll();
 });

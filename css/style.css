@@ -23,6 +23,17 @@ body{
    z-index: 1;
 }
 
+#masthead-loader {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 32px;
+  height: 32px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  transition: all 1s ease-in-out;
+}
+
 .grid {
   display: grid;
 }
@@ -39,7 +50,7 @@ body{
   left: 0;
 }
 .masthead {
-  background-image: url('../resources/Fern_boardwalk_forest_landscape.jpg');
+  background-image: url('../resources/boardwalk_fern_landscape.jpg');
   /*background-image: url('../resources/masthead-interleaved.png');*/
   background-attachment: fixed;
   background-position: center;

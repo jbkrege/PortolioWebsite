@@ -99,7 +99,7 @@ function addClassWhenVisibleOLD(query, visibleClass){
 
 
 //
-// Stuff for disableing scrolling
+// Stuff for disabling scrolling
 // copy pasta from
 // https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily
 //
@@ -109,14 +109,16 @@ function preventDefault(e) {
   e = e || window.event;
   if (e.preventDefault)
       e.preventDefault();
-  e.returnValue = false;  
+  e.returnValue = false; 
+  var loader = document.getElementById("masthead-loader");
+  loader.classList.remove('hidden')
 }
 
 function preventDefaultForScrollKeys(e) {
-    if (keys[e.keyCode]) {
-        preventDefault(e);
-        return false;
-    }
+  if (keys[e.keyCode]) {
+      preventDefault(e);
+      return false;
+  }
 }
 
 function disableScroll() {
@@ -137,6 +139,8 @@ function enableScroll() {
     window.onwheel = null; 
     window.ontouchmove = null;  
     document.onkeydown = null;  
+    var loader = document.getElementById("masthead-loader");
+    loader.classList.add('hidden');
 }
 //
 // End copy from https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily

@@ -153,7 +153,7 @@ function populateProjects(){
     //
     // Don't display until everything is ready.
     //
-    projGrid.classList.add('hidden');
+    // projGrid.classList.add('hidden');
 
     for (i = 0; i < numProjects; i++){
         //
@@ -202,50 +202,45 @@ function populateProjects(){
         //
         // Resize Closure
         //
-        projPic.onload = (event) => {
+        projPic.addEventListener('load', (event) => {
             thisPic = event.path[0];
             numLoadedImgs += 1;
-            console.log(numLoadedImgs,"projects loaded");
 
             //
             // Save all image aspects that are not part of the split one.
             //
             if (splitLastSquare && (thisPic.gridLocation < numGridSquares-1)){
-                imgAspects[thisPic.gridLocation] = thisPic.height / thisPic.width;
+              console.log("recording aspect",thisPic.height / thisPic.width);
+              imgAspects[thisPic.gridLocation] = thisPic.height / thisPic.width;
             }
 
             //
             // After all imgs have loaded
             //
             if (numLoadedImgs == numProjects){
-              console.log("all projects loaded");
               var gridTemplateRows = "";
               // var rowHeights = []
               var minAspect = Math.min.apply(Math,imgAspects);
+              // projGrid.classList.add('grid')
+
+              window.onresize = minProjRows;
 
               resizeProjectGrid = () => {
-                  // console.log("resizeProjectGrid called");
-                  var imageWidth = (window.innerWidth*.95-10)/projPerRow;
-                  var rowHeight = minAspect*imageWidth - 20; //-20 b/c some margin thing
-                  gridTemplateRows = ""
-                  for (var j = 0 ; j < numGridSquares/projPerRow ; j++){
-                      // margin is 5% -> width*.95
-                      // 10px collumn spacing
-                      // divide by number of pics per row
-                      gridTemplateRows += rowHeight.toString()+"px ";
-                  }
-                  projGrid.style.gridTemplateRows = gridTemplateRows;
+                var imageWidth = (window.innerWidth*.95-10)/projPerRow;
+                var rowHeight = minAspect*imageWidth - 20; //-20 b/c some margin thing
+                gridTemplateRows = ""
+                for (var j = 0 ; j < numGridSquares/projPerRow ; j++){
+                    // margin is 5% -> width*.95
+                    // 10px collumn spacing
+                    // divide by number of pics per row
+                    gridTemplateRows += rowHeight.toString()+"px ";
+                }
+                projGrid.style.gridTemplateRows = gridTemplateRows;
               }
               resizeProjectGrid();
-              projGrid.classList.remove('hidden')
-              projGrid.classList.add('grid')
               forceFontFit('proj-underlay-text');
-              if (!debugOffline){
-                resizeBackground();
-              }
-              window.onresize = minProjRows;
             }
-        }
+        });
 
         //
         // Order elements correctly in the DOM tree
