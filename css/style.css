@@ -85,6 +85,17 @@ body{
    font-weight: 200;
 }
 
+.bounce {
+  -webkit-animation:bounce 1s forwards;
+}
+
+  @-webkit-keyframes bounce {
+    0%       { bottom:5px; }
+    25%, 75% { bottom:15px; }
+    50%      { bottom:20px; }
+    100%     {bottom:0;}
+  }
+
 @media only screen and (max-width: 768px) {
    .masthead .main-title {
       font-size: 3em;
