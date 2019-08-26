@@ -131,16 +131,36 @@ function disableScroll() {
   document.onkeydown  = preventDefaultForScrollKeys;
 }
 
+function _enableScrolling(){
+  window.onmousewheel = document.onmousewheel = null; 
+  window.onwheel = null; 
+  window.ontouchmove = null;  
+  document.onkeydown = null;   
+}
+
+function makeArrowVisible(){
+  var arrow = document.getElementsByClassName('arrow')[0];
+  arrow.classList.add('hidden');
+  _enableScrolling();
+}
+
 function enableScroll() {
-    if (window.removeEventListener)
-        window.removeEventListener('DOMMouseScroll', preventDefault, false);
-    document.removeEventListener('wheel', preventDefault, {passive: false}); // Enable scrolling in Chrome
-    window.onmousewheel = document.onmousewheel = null; 
-    window.onwheel = null; 
-    window.ontouchmove = null;  
-    document.onkeydown = null;  
-    var loader = document.getElementById("masthead-loader");
-    loader.classList.add('hidden');
+  if (window.removeEventListener)
+      window.removeEventListener('DOMMouseScroll', preventDefault, false);
+  
+  var loader = document.getElementById("masthead-loader");
+  loader.classList.add('hidden'); 
+
+  var arrow = document.getElementsByClassName('arrow')[0];
+  arrow.classList.remove('hidden');
+
+  // Reenable scrolling
+  document.removeEventListener('wheel', preventDefault, {passive: false}); // Enable scrolling in Chrome
+  window.onmousewheel = document.onmousewheel = makeArrowVisible; 
+  window.onwheel = makeArrowVisible; 
+  window.ontouchmove = makeArrowVisible;  
+  document.onkeydown = makeArrowVisible;  
+
 }
 //
 // End copy from https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily

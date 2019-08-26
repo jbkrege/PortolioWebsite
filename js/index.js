@@ -210,7 +210,6 @@ function populateProjects(){
             // Save all image aspects that are not part of the split one.
             //
             if (splitLastSquare && (thisPic.gridLocation < numGridSquares-1)){
-              console.log("recording aspect",thisPic.height / thisPic.width);
               imgAspects[thisPic.gridLocation] = thisPic.height / thisPic.width;
             }
 
@@ -239,6 +238,8 @@ function populateProjects(){
               }
               resizeProjectGrid();
               forceFontFit('proj-underlay-text');
+              resizeBackground(); 
+              enableScroll();
             }
         });
 

@@ -7,10 +7,10 @@
 FOLDER="project-thumbnails"
 
 # max width
-WIDTH=1300
+WIDTH=618
 
 # max height
-HEIGHT=1300
+HEIGHT=1000
 
 #resize png or jpg to either height or width, keeps proportions using imagemagick
 find ${FOLDER} -iname '*.jpg' -o -iname '*.png' -exec convert \{} -verbose -resize $WIDTHx$HEIGHT\> \{} \;

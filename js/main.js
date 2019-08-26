@@ -42,5 +42,4 @@ window.addEventListener('load', function(){
   // Defined in index.js
   //
   populateProjects();
-  enableScroll();
 });
