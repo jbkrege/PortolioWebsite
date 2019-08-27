@@ -169,7 +169,11 @@ function populateProjects(){
           cell.classList.add('proj-cell');
          }
 
-        var link = document.createElement('a');
+        var link;
+        if (proj.href != ""){
+          link = document.createElement('a');
+        }
+
         var projPic = document.createElement('img');
         var projGif = document.createElement('img');
         var underlayText = document.createElement('div');
@@ -184,8 +188,9 @@ function populateProjects(){
         //
         // Add info to elements
         //
-
-        link.href = proj.href;
+        if (proj.href != ""){
+          link.href = proj.href;
+        }
 
         projPic.classList.add('proj-pic');
         projPic.src = proj.projPic;
@@ -246,7 +251,13 @@ function populateProjects(){
         //
         // Order elements correctly in the DOM tree
         //
-        link.appendChild(projPic);
+        if (proj.href === ""){
+          link = projPic;
+        } else {
+          link.appendChild(projPic);
+        }
+
+        wrapper.appendChild(link);
 
         underlay.appendChild(underlayText);
 
@@ -260,7 +271,6 @@ function populateProjects(){
           wrapper.appendChild(underlay);
           cell.appendChild(wrapper);
         } else {
-          // projPic.style.verticalAlign = 'bottom';
           wrapper.appendChild(link)
           wrapper.appendChild(projGif);
           wrapper.appendChild(underlay)

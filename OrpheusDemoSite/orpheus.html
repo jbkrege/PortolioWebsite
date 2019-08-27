@@ -16,7 +16,7 @@
     <div>
       <span>
       <div style = "background-color: rgb(0,0,0,1), height: 1224px, width: 1632px">
-        <img src = "main.JPG" class = "rotate" style = "height: 200px, width: 100px"></img>
+        <img src = "main.jpg" class = "rotate" style = "height: 200px, width: 100px"></img>
       </div>
         <br>
         <iframe align="center" width="560" height="315" src="https://www.youtube.com/embed/-Hx-Fstasjc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -55,7 +55,7 @@ This iteration of Orpheus forgoes the infrared detection methods in favor of an 
 
 We believe that good design hides complexity within order. Orpheus's enclosure, on the macro level, is a simple rectangular prism. Then you look at the edges and see the complexity in the box joints. Acrylic is strong, stiff, easily machined, and aesthetically beautiful.
 
-<img src="edges.JPG" class = "rotate" style = "height: 200px, width: 100px"> 
+<img src="edges.jpg" class = "rotate" style = "height: 200px, width: 100px"> 
 There is something about this design that we find incredibly appealing. It is also practical and functional, adding significant structural integrity by introducing more surface area for the epoxy to adhere to, and reducing the stress on the epoxy joints by transfering pressure into the acrylic. 
 <br><br>
 
@@ -108,7 +108,7 @@ The laser array is the heart and soul of Orpheus. It consists of 16 independentl
 
 <img src = "diagram.png"></img>
 Orpheus uses a Teensy 2.0 microcontroller to control all the inputs and outputs, and send MIDI messages to a computer for processing.
-<img src = "teensy.JPG"><br>
+<img src = "teensy.jpg"><br>
 The Teensy is the big chip on the left.
 Importantly, the laser circuitry operates best at five volts. We had originally selected the Teensy 3.5 as the central microcontroller for Orpheus, but later discovered that the overall laser intensity was not bright enough, as this controller operates at 3.3 volts. Instead, we chose an earlier version of the Teensy microcontroller, the 2.0, as the central controller for the laser array. This microcontroller operates at 5 volts, at the cost of lower overall computational power. For this portion of the project, high computational power was of less importance, and so the increased voltage and decreased size of the Teensy 2.0 proved to be more ideal for laser operation and detection.
     Also visible here are the opamps. Photodiodes detect the light reflected from the lasers off the hand. However, the photodiode's signal is 
@@ -118,13 +118,13 @@ Importantly, the laser circuitry operates best at five volts. We had originally 
     <br><br>
   Orpheus is powered and interfaced through a custom power supply that provieds 2 amps to power the lasers and all the chips with sufficient
   overhead for expansion.
-    <img src = "powerSupply.JPG" class = 'rotate' style = "transform: rotate(90deg), height: 600px, width:300"></img>
+    <img src = "powerSupply.jpg" class = 'rotate' style = "transform: rotate(90deg), height: 600px, width:300"></img>
     The heavy lifting is done by a voltage regulator. Voltage regulators get hot, so we designed vents to allow airflow to cool it.
   The large hole is a place holder for an ethernet port so we can expand Orpheus and give it more traditional controls to allow the user to
     manipulate its mappings (i.e. major->minor, transposition, etc.)
   The switch gives manual control over whether the red or blue lasers are activated.
   The logic circuit is what allows us to have independent control over all 16 lasers. 
-  <img src = "logic.JPG"></img><br>
+  <img src = "logic.jpg"></img><br>
   A blue override also comes out of the Teensy so that it can do fancy laser light shows and visualisers.
   An OR gate recieves the output of the switch and override, and outputs a control voltage, Blue.
   Blue is ran through a NOT gate then is ANDed with the red output of the switch to give the control voltage for the red lasers, Red.
@@ -144,7 +144,7 @@ Importantly, the laser circuitry operates best at five volts. We had originally 
   The opposite is true when MSB is high.
   <br><br>
   Finally, the output from the logic is fed to an array of NPN transistors.
-  <img src = "transistors.JPG"></img><br>
+  <img src = "transistors.jpg"></img><br>
   These transistors prevent the logic circuit from being damaged by the lasers, which require a lot of current (>=30mAh each).
    
       </p>
