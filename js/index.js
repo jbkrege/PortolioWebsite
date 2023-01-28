@@ -100,7 +100,7 @@ function populateProjects(){
                    },
                    {
                        'name'    : "SMG",
-                       'href'    : "SMG/Website/smg.html",
+                       'href'    : "https://htmlpreview.github.io/?https://github.com/jbkrege/SMG/blob/master/Website/home.html",
                        'projPic' : "project-thumbnails/smg.png",
                        'projGif' : "project-thumbnails/smg.gif",
                        'projText': "The Similarity Matrix Granulator, or <b>SMG</b>, is a granular synthesizer with an extra dimension – the ability to specify the similarity of grains to further sculpt sounds. (2016)"

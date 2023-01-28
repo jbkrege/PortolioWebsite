@@ -4,6 +4,12 @@ PORTFOLIO TODO
 * check project sites
 * Format for mobile
 
+
+* Consider a transition like this:
+https://www.istockphoto.com/za/photo/trunk-isolated-gm155154177-18692181 
+OR this:
+https://www.istockphoto.com/za/photo/set-of-four-timber-isolated-on-white-background-gm465946773-33505302
+
 * Could resizeProjectGrid be optimised?
 * Write a helper for my use that adds
   Array.from(elems).forEach((elem, index)
