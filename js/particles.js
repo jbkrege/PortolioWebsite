@@ -1,6 +1,7 @@
 //
 // Masthead animation
-// uses code by XXX
+// credit: vincent garreau
+//  https://vincentgarreau.com/particles.js/
 //
 
 (function() {
