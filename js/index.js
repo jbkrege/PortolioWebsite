@@ -283,9 +283,6 @@ function populateProjects(){
 }
 
 function minProjRows(){
-  //
-  // 
-  //
     resizeProjectGrid();
     forceFontFit("proj-underlay-text");
     if (!debugOffline){

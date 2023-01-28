@@ -122,7 +122,7 @@ function preventDefaultForScrollKeys(e) {
 }
 
 function disableScroll() {
-  if (window.addEventListener) // older FF
+  if (window.addEventListener) // older FireFox
       window.addEventListener('DOMMouseScroll', preventDefault, false);
   document.addEventListener('wheel', preventDefault, {passive: false}); // Disable scrolling in Chrome
   window.onwheel = preventDefault; // modern standard
