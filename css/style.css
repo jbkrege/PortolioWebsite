@@ -238,7 +238,6 @@ body{
   margin-top: 10vh;
   margin-left: 5vh;
   z-index: 1;
-  -webkit-backface-visibility: hidden; 
 }
 
 .skill {

@@ -22,6 +22,8 @@ var polyCanvas = pattern.canvas();
 polyCanvas.classList.add("polyBackground");
 document.body.appendChild(polyCanvas);
 
+
+
 window.addEventListener('load', function(){
   // Defined in scroll.js
   callFunctionWhenVisible('#headShot',bioAnimationCallback,{"threshold": 0.5});
@@ -31,5 +33,5 @@ window.addEventListener('load', function(){
   // Lazy load projects
   // Defined in index.js
   //
-  populateProjects();
+  // populateProjects();
 });
