@@ -253,18 +253,6 @@ body{
   margin: 10vh 2.5vw 2.5vw 2.5vw;
 }
 
-#proj-grid{
-  /*background-color: rgb(255, 255, 255, .2);*/
-  display: grid;
-  background-color: rgb(50,50,45,.3);
-  overflow: hidden;
-  width: 100%;
-  /*grid-template-rows: fit-content(40vh) fit-content(40vh) fit-content(40vh);*/
-  grid-template-columns: 1fr 1fr;
-  grid-row-gap: 10px;
-  grid-column-gap: 10px;
-}
-
 @media only screen and (min-width: 1550px) {
   #mission {
     font-size: 3vw;
