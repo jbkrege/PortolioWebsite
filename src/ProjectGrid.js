@@ -52,9 +52,6 @@ function ProjectTile({proj}) {
 
 
 function ProjectGrid() {
-    const projTiles = projectInfo.map((proj, ii) => (
-        <ProjectTile proj={proj} key={"col" + proj.name}/>
-    ));
 
     // Build 2 x 2 grid
     const rows = [];
