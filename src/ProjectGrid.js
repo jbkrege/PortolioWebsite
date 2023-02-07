@@ -38,13 +38,13 @@ var projectInfo = [{
 function ProjectTile({proj}) {
     return (
         <div className="col-6">
-        <a href={proj.href}>
-            <img className="proj-pic" src={proj.projPic}></img>
-            <img className="proj-gif" src={proj.projGif}></img>
-            <div className="proj-underlay">
-            <div className="proj-underlay-text">{proj.projText}</div>
-            </div>
-        </a>
+            <a href={proj.href}>
+                <img className="proj-pic" src={proj.projPic}></img>
+                <img className="proj-gif" src={proj.projGif}></img>
+                <div className="proj-underlay">
+                    <div className="proj-underlay-text">{proj.projText}</div>
+                </div>
+            </a>
         </div>
     );
 }
@@ -60,11 +60,11 @@ function ProjectGrid() {
         var currProj = projectInfo[ii];
         columnsInRow.push(<ProjectTile proj={currProj} key={currProj.name}/>)
         
-        // protect against odd numbered projects 
+        // add second project in row if available
         if (ii + 1 < projectInfo.length)
         {
-        var nextProj = projectInfo[ii + 1];
-        columnsInRow.push(<ProjectTile proj={nextProj} key={nextProj.name} />)
+            var nextProj = projectInfo[ii + 1];
+            columnsInRow.push(<ProjectTile proj={nextProj} key={nextProj.name} />)
         }
 
         rows.push(<div className="row" key={"row" + ii / 2}>{columnsInRow}</div>)
