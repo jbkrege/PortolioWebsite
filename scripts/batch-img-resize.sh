@@ -7,7 +7,7 @@
 FOLDER="project-thumbnails"
 
 # max width
-WIDTH=1000
+WIDTH=295
 
 # max height
 HEIGHT=618
@@ -23,6 +23,8 @@ find ${FOLDER} -iname '*.jpg' -exec convert \{} -verbose -resize $WIDTHx$HEIGHT\
 
 
 find ${FOLDER} -iname '*.gpg' -exec convert \{} -verbose -resize $WIDTHx$HEIGHT\> \{} \;
+
+find ${FOLDER} -iname '*.gif' -exec convert \{} -verbose -resize $WIDTHx$HEIGHT\> \{} \;
 
 # alternative
 #mogrify -path ${FOLDER} -resize ${WIDTH}x${HEIGHT}% *.png -verbose
